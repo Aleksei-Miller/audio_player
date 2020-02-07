@@ -4,22 +4,19 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include <windows.h>
-
 //For getch
 #include <conio.h>
 
 //Wrapper
 #include "mci_wrapper.h"
-#include <io.h>
 
-//Global variables
-char short_path[255] = {0};
 
 int main(int argc, char *argv[])
 {
 	//Pressed key
 	int key = 0;
+
+	char short_path[255] = {0};
 	
 	SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
@@ -48,7 +45,8 @@ int main(int argc, char *argv[])
 		
 		switch (key)
 		{
-		case 112:
+			//P key
+			case 112:
 			{
 				static is_played = true;
 
@@ -82,6 +80,7 @@ int main(int argc, char *argv[])
 		if (DEBUG == 1)
 			printf("Pressed key: %d\n", key);
 	}
+	//Q key
 	while(key != 113);
 
 	return EXIT_SUCCESS;

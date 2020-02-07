@@ -9,9 +9,9 @@
 //MCI
 char mci_error_text[255] = {0};
 
-bool mciSendCmd(const char *command)
+bool mciSendCmd(char *command)
 {
-	int mci_error = mciSendString(command, NULL, 0, 0);
+	int mci_error = mciSendString((LPCTSTR) command, NULL, 0, 0);
  
 	if (mci_error != 0)
 	{
@@ -30,6 +30,8 @@ bool play(const char *path)
 	strcpy(command, "play ");
 
 	strcat(command, path);
+
+	strcat(command, " repeat");
 
 	if (!mciSendCmd(command))
 		return false;
